@@ -1,0 +1,8 @@
+create procedure usp_total_books_by_author
+    (IN f_name VARCHAR(255), l_name VARCHAR(255), OUT count_out INT)
+begin
+    SELECT count(b.id) into count_out
+    from books b
+    join authors a on a.id = b.author_id
+    where a.first_name = f_name AND a.last_name = l_name;
+end;
